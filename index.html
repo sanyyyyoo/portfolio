@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanyogita Shinde - Data Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .job-period {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .job-description ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .job-description li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .job-description li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: background 0.3s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Sanyogita Shinde</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>Sanyogita Shinde</h1>
+                    <p>Data Analyst & AI Enthusiast | Transforming Data into Insights</p>
+                    <a href="https://github.com/sanyyyyoo" target="_blank" class="cta-button">View My GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title fade-in">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <p>I'm a detail-oriented B.Tech student specializing in Artificial Intelligence and Data Science at KJ Somaiya Institute of Technology. With a passion for transforming raw data into actionable insights, I excel at using modern tools and techniques to solve complex business problems.</p>
+                        
+                        <p>Currently working as a Data Research Intern at Finmento, I have hands-on experience in data automation, analysis, and building AI-powered solutions. My goal is to contribute to data-driven decision-making and process optimization across various industries.</p>
+                        
+                        <p>With a strong foundation in machine learning, deep learning, and data visualization, I'm committed to staying at the forefront of technological advancement in the data science field.</p>
+                    </div>
+                    <div class="fade-in">
+                        <h3>Core Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">Power BI</div>
+                            <div class="skill-item">MySQL</div>
+                            <div class="skill-item">Deep Learning</div>
+                            <div class="skill-item">Data Visualization</div>
+                            <div class="skill-item">Advanced Excel</div>
+                            <div class="skill-item">Web Scraping</div>
+                            <div class="skill-item">Django</div>
+                            <div class="skill-item">Pandas</div>
+                            <div class="skill-item">Automation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience">
+            <div class="container">
+                <h2 class="section-title fade-in">Work Experience</h2>
+                
+                <div class="experience-item fade-in">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Data Research Intern</div>
+                            <div style="opacity: 0.8;">Finmento - Delhi</div>
+                        </div>
+                        <div class="job-period">Jun 2025 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Research and gather data from online sources to support market analysis and lead generation</li>
+                            <li>Organize and clean data using Excel and present it in structured formats</li>
+                            <li>Help build and maintain categorized business databases</li>
+                            <li>Work closely with reporting managers to align research efforts with business objectives</li>
+                            <li>Submit progress updates and share insights derived from data interpretation</li>
+                            <li>Ensure the accuracy, consistency, and reliability of collected data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Software Intern</div>
+                            <div style="opacity: 0.8;">JNPA - Uran</div>
+                        </div>
+                        <div class="job-period">Dec 2024 - Jan 2025</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed a complaint management web-app using Java Servlets and JDBC</li>
+                            <li>Set up secure login and registration features to protect user access</li>
+                            <li>Used MySQL for database management and HTML, CSS, and JavaScript for the user interface</li>
+                            <li>Improved complaint resolution efficiency by 15% by implementing better status updates</li>
+                            <li>Deployed the app on a Tomcat server, using Eclipse IDE for development and deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-title">Business Data Classification using Deep Learning</div>
+                        <p>Built an AI system to automatically classify unstructured business listing data into four categories: Name, Category, Address, and Contact. Fine-tuned DistilBERT for 4-class text classification with high accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">DistilBERT</span>
+                            <span class="tech-tag">HuggingFace</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-title">HR Data Analytics Dashboard</div>
+                        <p>Conducted an end-to-end data analysis project delivering key insights on employee attrition. Developed an interactive PowerBI dashboard visualizing attrition rates by salary, department, age, and years at company.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">Excel</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-title">Alumni Connect Platform</div>
+                        <p>Developed a professional internship website connecting students from tier 2-3 colleges with Alumni. Implemented full-stack solution with Django REST framework backend and MySQL database.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+                <p class="fade-in">Let's connect and discuss opportunities in data science and AI!</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h3>📧 Email</h3>
+                        <p>Shinde.sanyogitas1@gmail.com</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h3>📱 Phone</h3>
+                        <p>+91 8356984285</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h3>📍 Location</h3>
+                        <p>Mumbai, India</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h3>💼 GitHub</h3>
+                        <p><a href="https://github.com/sanyyyyoo/jnpa" style="color: #3498db;">github.com/sanyyyyoo</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add visible class to hero content immediately
+        document.querySelector('.hero .fade-in').classList.add('visible');
+    </script>
+</body>
+</html>
